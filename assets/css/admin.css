@@ -1,0 +1,148 @@
+/**
+ * Mavo Highlight Comments — admin metabox styles.
+ */
+
+.mvhc-metabox .mvhc-section {
+	margin: 0 0 1.5rem;
+	padding: 0 0 1.25rem;
+	border-bottom: 1px solid #e2e4e7;
+}
+
+.mvhc-metabox .mvhc-section:last-child {
+	border-bottom: 0;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+.mvhc-metabox h3 {
+	margin: 0 0 0.6rem;
+}
+
+.mvhc-notice {
+	background: #fbeaea;
+	border-left: 4px solid #d29ca0;
+	padding: 0.5rem 0.75rem;
+	margin: 0;
+}
+
+.mvhc-source__list {
+	margin: 0;
+}
+
+.mvhc-source__list li {
+	margin: 0 0 0.25rem;
+}
+
+.mvhc-field {
+	margin: 0 0 0.75rem;
+}
+
+.mvhc-field label {
+	display: block;
+	font-weight: 600;
+	margin-bottom: 0.2rem;
+}
+
+.mvhc-field-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+	gap: 0.75rem;
+}
+
+/* Selected highlight rows */
+.mvhc-rows {
+	display: grid;
+	gap: 0.75rem;
+	margin-bottom: 0.75rem;
+}
+
+.mvhc-row {
+	border: 1px solid #dcdcde;
+	border-radius: 8px;
+	background: #fff;
+}
+
+.mvhc-row__head {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.5rem 0.75rem;
+	background: #f6f7f7;
+	border-bottom: 1px solid #dcdcde;
+	border-radius: 8px 8px 0 0;
+}
+
+.mvhc-row__handle {
+	cursor: grab;
+	color: #787c82;
+	user-select: none;
+}
+
+.mvhc-row__title {
+	flex: 1;
+}
+
+.mvhc-row__remove {
+	color: #b32d2e;
+}
+
+.mvhc-row__body {
+	padding: 0.75rem;
+}
+
+.mvhc-row.is-dragging {
+	opacity: 0.6;
+}
+
+/* Candidate list */
+.mvhc-candidate-list {
+	display: grid;
+	gap: 0.75rem;
+	margin: 0.75rem 0 0;
+}
+
+.mvhc-candidate {
+	border: 1px solid #dcdcde;
+	border-left: 4px solid #c3c4c7;
+	border-radius: 8px;
+	padding: 0.75rem;
+	background: #fff;
+}
+
+.mvhc-candidate--high {
+	border-left-color: #a92d87;
+}
+
+.mvhc-candidate__meta {
+	margin-bottom: 0.35rem;
+}
+
+.mvhc-candidate__score {
+	font-weight: 700;
+}
+
+.mvhc-candidate__author {
+	font-weight: 600;
+}
+
+.mvhc-candidate__date {
+	color: #787c82;
+}
+
+.mvhc-candidate__reasons {
+	color: #2a7d2e;
+	font-size: 0.9em;
+}
+
+.mvhc-candidate__warnings {
+	color: #b26a00;
+	font-size: 0.9em;
+}
+
+.mvhc-candidate__text {
+	margin: 0.5rem 0;
+	padding: 0.5rem 0.75rem;
+	background: #f6f7f7;
+	border-radius: 6px;
+	white-space: pre-wrap;
+}

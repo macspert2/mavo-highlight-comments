@@ -1,0 +1,65 @@
+/**
+ * Mavo Highlight Comments — frontend module.
+ * Follows the shared Mavo utility-card visual language (soft card, rounded
+ * corners, subtle shadow). Falls back gracefully when tokens are absent.
+ */
+
+.mvhc-translated-comments {
+	margin: 2rem 0;
+}
+
+.mvhc-translated-comments__inner {
+	background: var(--mv-color-surface, #fff);
+	border: 0;
+	border-radius: var(--mv-tile-radius, 14px);
+	box-shadow: var(--mv-tile-shadow, 0 8px 22px rgba(58, 58, 58, 0.08));
+	padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.mvhc-translated-comments__title {
+	margin-top: 0;
+	margin-bottom: 0.4rem;
+	color: var(--mv-color-primary, #4e74a5);
+}
+
+.mvhc-translated-comments__intro {
+	margin-top: 0;
+	margin-bottom: 1.25rem;
+	color: var(--mv-color-muted, #555555);
+}
+
+.mvhc-translated-comments__list {
+	display: grid;
+	gap: 1rem;
+}
+
+.mvhc-translated-comment {
+	border-left: 4px solid var(--mv-color-highlight, #a92d87);
+	background: var(--mv-color-bg-cream, #f7f4ef);
+	border-radius: var(--mv-tile-radius-sm, 12px);
+	padding: 1rem 1.1rem;
+}
+
+.mvhc-translated-comment__quote {
+	margin: 0;
+	quotes: none;
+}
+
+.mvhc-translated-comment__quote p {
+	margin-top: 0;
+}
+
+.mvhc-translated-comment__quote p:last-child {
+	margin-bottom: 0.6rem;
+}
+
+.mvhc-translated-comment__source {
+	margin-top: 0.5rem;
+	margin-bottom: 0;
+	color: var(--mv-color-muted, #555555);
+	font-size: 0.92rem;
+}
+
+.mvhc-translated-comment__dash {
+	margin-right: 0.15rem;
+}
