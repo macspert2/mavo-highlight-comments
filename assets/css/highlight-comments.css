@@ -34,15 +34,28 @@
 }
 
 .mvhc-translated-comment {
-	border-left: 4px solid var(--mv-color-highlight, #a92d87);
-	background: var(--mv-color-bg-cream, #f7f4ef);
-	border-radius: var(--mv-tile-radius-sm, 12px);
-	padding: 1rem 1.1rem;
+	background: var(--mv-color-surface, #fff);
+	border: 0;
+	border-radius: var(--mv-tile-radius-sm, 10px);
+	box-shadow: var(--mv-tile-shadow, 0 8px 22px rgba(58, 58, 58, 0.08));
+	padding: clamp(0.9rem, 2.5vw, 1.25rem);
 }
 
-.mvhc-translated-comment__quote {
+/* Neutralise any theme blockquote styling (borders, italics, quote marks) so
+   the only visual outline is the card's own drop shadow. Scoped to beat
+   theme selectors like `.entry-content blockquote`. */
+.mvhc-translated-comments .mvhc-translated-comment__quote {
 	margin: 0;
+	padding: 0;
+	border: 0;
+	background: none;
+	font-style: normal;
 	quotes: none;
+}
+
+.mvhc-translated-comment__quote::before,
+.mvhc-translated-comment__quote::after {
+	content: none;
 }
 
 .mvhc-translated-comment__quote p {
@@ -50,7 +63,7 @@
 }
 
 .mvhc-translated-comment__quote p:last-child {
-	margin-bottom: 0.6rem;
+	margin-bottom: 0.5rem;
 }
 
 .mvhc-translated-comment__source {

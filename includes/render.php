@@ -101,61 +101,75 @@ function mvhc_resolve_lang( $post_id ) {
 }
 
 /**
- * Module title for a language.
+ * Module title for a language, singular/plural aware.
  *
  * @param string $lang    Language slug.
  * @param int    $post_id Post ID.
+ * @param int    $count   Number of highlights being shown.
  * @return string
  */
-function mvhc_frontend_title( $lang, $post_id ) {
+function mvhc_frontend_title( $lang, $post_id, $count = 1 ) {
 	$override = get_post_meta( $post_id, MVHC_META_TITLE_OVERRIDE, true );
+	$single   = ( 1 === (int) $count );
 
 	if ( is_string( $override ) && '' !== trim( $override ) ) {
 		$title = $override;
 	} else {
 		switch ( $lang ) {
 			case 'de':
-				$title = __( 'Kommentare aus der französischen Version', 'mavo-highlight-comments' );
+				$title = $single
+					? __( 'Kommentar aus der französischen Version', 'mavo-highlight-comments' )
+					: __( 'Kommentare aus der französischen Version', 'mavo-highlight-comments' );
 				break;
 			case 'fr':
-				$title = __( 'Commentaires issus de la version française', 'mavo-highlight-comments' );
+				$title = $single
+					? __( 'Commentaire de la version française', 'mavo-highlight-comments' )
+					: __( 'Commentaires de la version française', 'mavo-highlight-comments' );
 				break;
 			default:
-				$title = __( 'Reader comments from the French article', 'mavo-highlight-comments' );
+				$title = $single
+					? __( 'Reader comment from the French article', 'mavo-highlight-comments' )
+					: __( 'Reader comments from the French article', 'mavo-highlight-comments' );
 		}
 	}
 
 	/** Filter the module title. */
-	return (string) apply_filters( 'mvhc_frontend_title', $title, $lang, $post_id );
+	return (string) apply_filters( 'mvhc_frontend_title', $title, $lang, $post_id, $count );
 }
 
 /**
- * Module intro paragraph for a language.
+ * Module intro paragraph for a language, singular/plural aware.
  *
  * @param string $lang    Language slug.
  * @param int    $post_id Post ID.
+ * @param int    $count   Number of highlights being shown.
  * @return string
  */
-function mvhc_frontend_intro( $lang, $post_id ) {
+function mvhc_frontend_intro( $lang, $post_id, $count = 1 ) {
 	$override = get_post_meta( $post_id, MVHC_META_INTRO_OVERRIDE, true );
+	$single   = ( 1 === (int) $count );
 
 	if ( is_string( $override ) && '' !== trim( $override ) ) {
 		$intro = $override;
 	} else {
 		switch ( $lang ) {
 			case 'de':
-				$intro = __( 'Diese Kommentare wurden ursprünglich unter dem französischen Artikel veröffentlicht und ins Deutsche übersetzt.', 'mavo-highlight-comments' );
+				$intro = $single
+					? __( 'Ursprünglich auf Französisch geschrieben, hier übersetzt.', 'mavo-highlight-comments' )
+					: __( 'Ursprünglich auf Französisch geschrieben, hier übersetzt.', 'mavo-highlight-comments' );
 				break;
 			case 'fr':
-				$intro = __( 'Ces commentaires ont été sélectionnés depuis l’article d’origine.', 'mavo-highlight-comments' );
+				$intro = __( 'Sélection depuis l’article d’origine.', 'mavo-highlight-comments' );
 				break;
 			default:
-				$intro = __( 'These comments were originally posted on the French version of this article and translated for English readers.', 'mavo-highlight-comments' );
+				$intro = $single
+					? __( 'Originally written in French, translated here.', 'mavo-highlight-comments' )
+					: __( 'Originally written in French, translated here.', 'mavo-highlight-comments' );
 		}
 	}
 
 	/** Filter the module intro. */
-	return (string) apply_filters( 'mvhc_frontend_intro', $intro, $lang, $post_id );
+	return (string) apply_filters( 'mvhc_frontend_intro', $intro, $lang, $post_id, $count );
 }
 
 /**
@@ -214,8 +228,9 @@ function mvhc_render_highlights( $post_id, $force = false ) {
 	}
 
 	$lang  = mvhc_resolve_lang( $post_id );
-	$title = mvhc_frontend_title( $lang, $post_id );
-	$intro = mvhc_frontend_intro( $lang, $post_id );
+	$count = count( $highlights );
+	$title = mvhc_frontend_title( $lang, $post_id, $count );
+	$intro = mvhc_frontend_intro( $lang, $post_id, $count );
 
 	/**
 	 * Fires before the module markup is built.
