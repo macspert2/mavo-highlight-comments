@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Mavo Highlight Comments
  * Description: Curate and display translated highlights from French reader comments on translated (EN/DE) Maman Voyage articles, as a clearly labelled editorial block — never mixed into native comment threads.
- * Version: 0.1.3
+ * Version: 0.1.4
  * Requires at least: 5.8
  * Requires PHP: 7.4
  * License: GPLv2 or later
@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MVHC_VERSION', '0.1.3' );
+define( 'MVHC_VERSION', '0.1.4' );
 define( 'MVHC_FILE', __FILE__ );
 define( 'MVHC_PATH', plugin_dir_path( __FILE__ ) );
 define( 'MVHC_URL', plugin_dir_url( __FILE__ ) );

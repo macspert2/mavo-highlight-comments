@@ -6,6 +6,12 @@
 
 .mvhc-translated-comments {
 	margin: 2rem 0;
+	/* Defensive: if this markup is ever pasted into a Preformatted (<pre>)
+	   block, the section would otherwise inherit white-space:pre and a
+	   monospace font, so the comment never wraps and the card blows out to
+	   an unreasonable width. Reset both here. The proper fix is to not wrap
+	   the module in a <pre> — use the shortcode or a Custom HTML block. */
+	white-space: normal;
 }
 
 .mvhc-translated-comments__inner {
@@ -14,6 +20,7 @@
 	border-radius: var(--mv-tile-radius, 14px);
 	box-shadow: var(--mv-tile-shadow, 0 8px 22px rgba(58, 58, 58, 0.08));
 	padding: clamp(1.25rem, 3vw, 2rem);
+	font-family: inherit;
 }
 
 .mvhc-translated-comments__title {
