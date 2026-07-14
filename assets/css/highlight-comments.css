@@ -30,6 +30,11 @@
 
 .mvhc-translated-comments__list {
 	display: grid;
+	/* Explicit single-column track. Without this, the implicit `auto` track
+	   sizes to max-content — i.e. the whole comment on one line — which blows
+	   the card out to an unreasonable width. minmax(0, 1fr) caps it at the
+	   container width and lets the text wrap. */
+	grid-template-columns: minmax(0, 1fr);
 	gap: 1rem;
 }
 
@@ -39,6 +44,8 @@
 	border-radius: var(--mv-tile-radius-sm, 10px);
 	box-shadow: var(--mv-tile-shadow, 0 8px 22px rgba(58, 58, 58, 0.08));
 	padding: clamp(0.9rem, 2.5vw, 1.25rem);
+	min-width: 0;
+	overflow-wrap: break-word;
 }
 
 /* Neutralise any theme blockquote styling (borders, italics, quote marks) so
@@ -52,6 +59,8 @@
 /*	font-style: normal; */
 	font-size: 17px;
 	quotes: none;
+	white-space: normal;
+	overflow-wrap: break-word;
 }
 
 .mvhc-translated-comment__quote::before,
